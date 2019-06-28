@@ -5,6 +5,7 @@ import java.util.Map;
 
 // import com.bitcamp.web.common.util.PageProxy;
 import com.bitcamp.web.domain.CustomerDTO;
+import com.bitcamp.web.repositories.CustomerRepository;
 import com.bitcamp.web.service.CustomerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerService {
+
+    @Autowired CustomerRepository customerRepository;
 
     public void addCustomer(CustomerDTO customer) {
         
@@ -37,8 +40,8 @@ public class CustomerService {
         
     }
 
-    public int countAll() {
-        return 0;
+    public Long countAll() {
+        return customerRepository.count();
     }
 
     public CustomerDTO login(CustomerDTO customer) {

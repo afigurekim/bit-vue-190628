@@ -49,8 +49,8 @@ public class CustomerController {
     @GetMapping("/count")
     public String count() {
         System.out.println("CustomerController count() 경로로 들어옴");
-        int count = customerService.countAll();
-        return count+"";
+        Long count = customerService.countAll();
+        return String.valueOf(count);
     }
 
     @GetMapping("/{customerId}/{password}")
