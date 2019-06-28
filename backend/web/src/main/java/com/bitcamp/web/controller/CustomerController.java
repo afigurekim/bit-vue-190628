@@ -8,6 +8,7 @@ import java.util.Map;
 // import com.bitcamp.web.common.util.PageProxy;
 import com.bitcamp.web.common.util.Printer;
 import com.bitcamp.web.domain.CustomerDTO;
+import com.bitcamp.web.entities.Customer;
 import com.bitcamp.web.service.CustomerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,6 @@ public class CustomerController {
 
     @GetMapping("/count")
     public String count() {
-        System.out.println("CustomerController count() 경로로 들어옴");
         Long count = customerService.countAll();
         return String.valueOf(count);
     }
@@ -57,15 +57,14 @@ public class CustomerController {
     public CustomerDTO login(@PathVariable("customerId")String id, @PathVariable("password") String pass) {
         customer.setCustomerId(id);
         customer.setPassword(pass);
-        return customerService.login(customer);
+        // return customerService.login(customer);
+        return new CustomerDTO();
     }
 
     @GetMapping("/{customerId}")
-    public CustomerDTO getCustomer(@PathVariable String customerId) {
-        HashMap<String, Object> map = new HashMap<>();
-        p.accept("GET 진입 : "+customerId);
-        customer.setCustomerId("hong");
-        return customer;
+    public List<Customer> getCustomer(@PathVariable String customerId) {
+        // return customerService.findCustomerById(customerId);
+        return null;
     }
 
     @PutMapping("/{customerId}")

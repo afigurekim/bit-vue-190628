@@ -13,6 +13,10 @@
     <div class="checkbox">
       <label><input type="checkbox"> Remember me</label>
     </div>
+    <div class="form-group">
+      <label for="customerid">아이디:</label>
+      <input v-model="customerid" type="text" class="form-control" id="customerid" placeholder="아이디">
+    </div>
     <button class="btn btn-default" @click="get">조 회</button>
     <button class="btn btn-default" @click="post">입 력</button>
     <button class="btn btn-default" @click="put">수 정</button>
@@ -39,9 +43,9 @@ export default {
   },
   methods: {
     get() {
-      axios.get(`${this.context}/customers/count`)
+      axios.get(`${this.context}/customers/as`)
       .then(d => {
-        alert(`SUCCESS : ${d.data}`)
+        alert(`SUCCESS : ${d.data.customerName}`)
       })
       .catch(e => {
         alert('ERROR')
