@@ -1,6 +1,7 @@
 package com.bitcamp.web.repositories;
 
 import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,6 @@ public class CustomerRepositoryTests {
     @Test
     public void countTest() throws Exception {
         Long count = repo.count();
-        // assertThat(count, equalTo(31), matcher);
+        assertThat(Integer.parseInt(count+""), equalTo(31));
     }
 }
