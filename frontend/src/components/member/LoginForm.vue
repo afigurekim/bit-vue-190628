@@ -38,35 +38,62 @@ export default {
   },
   data() {
     return {
-      context: 'http://localhost:9000'
+      context: 'http://localhost:9000/customers'
     }
   },
   methods: {
-    get() {
-      axios.get(`${this.context}/customers/as`)
-      .then(d => {
-        alert(`SUCCESS : ${d.data.customerName}`)
+    count() {
+      axios.get(`${this.context}/count`)
+      .then(res => {
+        alert(`SUCCESS : ${res.data}`)
       })
       .catch(e => {
         alert('ERROR')
       })
     },
-    post()  {
-      axios.post('/customers')
-      .then(d => {
-        alert(`POST 연동성공 : ${d.data.result}`)
+    deleteById() {
+      axios.delete(`${this.context}/1`)
+      .then(res => {
+        alert(`SUCCESS : ${res.data}`)
+      })
+      .catch(e => {
+        alert('ERROR')
       })
     },
-    put()  {
-      axios.put('/customers/id')
-      .then(d => {
-        alert(`PUT 연동성공 : ${d.data.result}`)
+    existsById() {
+      axios.get(`${this.context}/exists/1`)
+      .then(res => {
+        alert(`SUCCESS : ${res.data}`)
+      })
+      .catch(e => {
+        alert('ERROR')
       })
     },
-    del()  {
-      axios.delete('/customers/id')
-      .then(d => {
-        alert(`DELETE 연동성공 : ${d.data.result}`)
+    findAll() {
+      axios.get(`${this.context}`)
+      .then(res => {
+        alert(`SUCCESS : ${res.data}`)
+      })
+      .catch(e => {
+        alert('ERROR')
+      })
+    },
+    findById() {
+      axios.get(`${this.context}/1`)
+      .then(res => {
+        alert(`SUCCESS : ${res.data}`)
+      })
+      .catch(e => {
+        alert('ERROR')
+      })
+    },
+    save() {
+      axios.post(`${this.context}`)
+      .then(res => {
+        alert(`SUCCESS : ${res.data}`)
+      })
+      .catch(e => {
+        alert('ERROR')
       })
     }
   }
