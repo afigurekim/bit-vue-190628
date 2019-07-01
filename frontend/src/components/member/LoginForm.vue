@@ -3,24 +3,23 @@
   <Nav></Nav>
   <form>
     <div class="form-group">
-      <label for="email">이메일:</label>
-      <input type="email" class="form-control" id="email" placeholder="이메일 예: id@domain.com">
+      <label for="userid">아이디:</label>
+      <input type="text" class="form-control" id="userid" v-model="userid" placeholder="아이디를 입력해주세요">
     </div>
     <div class="form-group">
-      <label for="password">패스워드:</label>
-      <input type="password" class="form-control" id="password" placeholder="패스워드 예: password">
+      <label for="userpw">패스워드:</label>
+      <input type="password" class="form-control" id="userpw" v-model="userpw" placeholder="패스워드를 입력해주세요">
     </div>
     <div class="checkbox">
       <label><input type="checkbox"> Remember me</label>
     </div>
-    <div class="form-group">
-      <label for="customerid">아이디:</label>
-      <input v-model="customerid" type="text" class="form-control" id="customerid" placeholder="아이디">
-    </div>
-    <button class="btn btn-default" @click="get">조 회</button>
-    <button class="btn btn-default" @click="post">입 력</button>
-    <button class="btn btn-default" @click="put">수 정</button>
-    <button class="btn btn-default" @click="del">삭 제</button>
+    <button class="btn btn-default" @click="login">로그인</button>
+    <button class="btn btn-default" @click="count">count</button>
+    <button class="btn btn-default" @click="deleteById">deleteById</button>
+    <button class="btn btn-default" @click="existsById">existsById</button>
+    <button class="btn btn-default" @click="findAll">findAll</button>
+    <button class="btn btn-default" @click="findById">findById</button>
+    <button class="btn btn-default" @click="save">save</button>
   </form>
   <Footer></Footer>
 </div>
@@ -38,10 +37,43 @@ export default {
   },
   data() {
     return {
-      context: 'http://localhost:9000/customers'
+      context: 'http://localhost:9000/customers',
+      customerId: 'hong',
+      customerName: '홍길동',
+      password: '1234',
+      ssn: '123456-1234567',
+      phone: '010-9999-9999',
+      city: '서울 중구',
+      address: '종로 69 YMCA',
+      postalcode: '00001',
+      photo: 'hong1.jpg',
+      input: {
+        userid: "",
+        userpw: ""
+      }
     }
   },
   methods: {
+    login() {
+      let data = {
+        customerId: `${this.userid}`,
+        password: `${this.userpw}`
+      }
+      let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT fefege..'
+      }
+      alert(`${this.userid} : ${this.userpw}`)
+      /* axios.get(`${this.context}/login`, 
+                  JSON.stringify(data),
+                  { headers: headers })
+      .then(res => {
+        alert(`SUCCESS : ${res.data.customerName}`)
+      })
+      .catch(e => {
+        alert('ERROR')
+      }) */
+    },
     count() {
       axios.get(`${this.context}/count`)
       .then(res => {
@@ -72,7 +104,7 @@ export default {
     findAll() {
       axios.get(`${this.context}`)
       .then(res => {
-        alert(`SUCCESS : ${res.data}`)
+        alert(`SUCCESS : ${res.data[0].customerName}`)
       })
       .catch(e => {
         alert('ERROR')
@@ -81,14 +113,31 @@ export default {
     findById() {
       axios.get(`${this.context}/1`)
       .then(res => {
-        alert(`SUCCESS : ${res.data}`)
+        alert(`SUCCESS : ${res.data.customerName}`)
       })
       .catch(e => {
         alert('ERROR')
       })
     },
     save() {
-      axios.post(`${this.context}`)
+      let data = {
+        customerId: this.customerId,
+        customerName: this.customerName,
+        password: this.password,
+        ssn: this.ssn,
+        phone: this.phone,
+        city: this.city,
+        address: this.address,
+        postalcode: this.postalcode,
+        photo: this.photo
+      }
+      let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT fefege..'
+      }
+      axios.post(`${this.context}`, 
+                    JSON.stringify(data),
+                    { headers: headers })
       .then(res => {
         alert(`SUCCESS : ${res.data}`)
       })
