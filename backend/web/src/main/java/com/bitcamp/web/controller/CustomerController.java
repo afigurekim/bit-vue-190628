@@ -3,13 +3,13 @@ package com.bitcamp.web.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
-// import com.bitcamp.web.common.util.PageProxy;
+import com.bitcamp.web.common.lambda.ISupplier;
 import com.bitcamp.web.domain.CustomerDTO;
 import com.bitcamp.web.entities.Customer;
+import com.bitcamp.web.repositories.CustomerRepository;
 import com.bitcamp.web.service.CustomerService;
 
 import org.modelmapper.ModelMapper;
@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.beans.BeanUtils;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
@@ -32,6 +31,7 @@ public class CustomerController {
     @Autowired CustomerService customerService;
     @Autowired CustomerDTO customer;
     @Autowired ModelMapper modelMapper;
+    @Autowired CustomerRepository repo;
 
     @Bean
     public ModelMapper modelMapper() {
@@ -118,16 +118,14 @@ public class CustomerController {
         Iterable<Customer> entity = customerService.saveAll(null);
         return null;
     } */
-    @GetMapping("/login")
+    @PostMapping("/login")
     public CustomerDTO login(@RequestBody CustomerDTO dto) {
-        System.out.println("* login()으로 들어온 dto : " + dto.toString());
-        Customer entity = new Customer();
-        entity.setCustomerId(dto.getCustomerId());
-        entity.setPassword(dto.getPassword());
-        System.out.println("* entity로 바뀐 정보 : " + entity.toString());
-        // CustomerDTO d =  customerService.login(entity);
-        // System.out.println("* dto에서 반환된 name : " + d.getCustomerName());
-        return null;
+        System.out.println("login() 진입 : "+ dto.getCustomerId() +" / "+ dto.getPassword());
+        ISupplier fx = (() -> {
+            return repo.findByCustomerIdAndPassword(dto.getCustomerId(), dto.getPassword());
+        });
+        Customer entity = (Customer)fx.get();
+        return modelMapper.map(entity, CustomerDTO.class);
     }
 
 }

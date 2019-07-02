@@ -3,23 +3,23 @@
   <Nav></Nav>
   <form>
     <div class="form-group">
-      <label for="userid">아이디:</label>
-      <input type="text" class="form-control" id="userid" v-model="userid" placeholder="아이디를 입력해주세요">
+      <label for="inputid">아이디:</label>
+      <input type="text" class="form-control" id="inputid" v-model="customerId" placeholder="아이디를 입력해주세요">
     </div>
     <div class="form-group">
-      <label for="userpw">패스워드:</label>
-      <input type="password" class="form-control" id="userpw" v-model="userpw" placeholder="패스워드를 입력해주세요">
+      <label for="inputpw">패스워드:</label>
+      <input type="password" class="form-control" id="inputpw" v-model="password" placeholder="패스워드를 입력해주세요">
     </div>
     <div class="checkbox">
       <label><input type="checkbox"> Remember me</label>
     </div>
-    <button class="btn btn-default" @click="login">로그인</button>
     <button class="btn btn-default" @click="count">count</button>
     <button class="btn btn-default" @click="deleteById">deleteById</button>
     <button class="btn btn-default" @click="existsById">existsById</button>
     <button class="btn btn-default" @click="findAll">findAll</button>
     <button class="btn btn-default" @click="findById">findById</button>
     <button class="btn btn-default" @click="save">save</button>
+    <button class="btn btn-default" @click="login">login</button>
   </form>
   <Footer></Footer>
 </div>
@@ -46,34 +46,10 @@ export default {
       city: '서울 중구',
       address: '종로 69 YMCA',
       postalcode: '00001',
-      photo: 'hong1.jpg',
-      input: {
-        userid: "",
-        userpw: ""
-      }
+      photo: 'hong1.jpg'
     }
   },
   methods: {
-    login() {
-      let data = {
-        customerId: `${this.userid}`,
-        password: `${this.userpw}`
-      }
-      let headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'JWT fefege..'
-      }
-      alert(`${this.userid} : ${this.userpw}`)
-      /* axios.get(`${this.context}/login`, 
-                  JSON.stringify(data),
-                  { headers: headers })
-      .then(res => {
-        alert(`SUCCESS : ${res.data.customerName}`)
-      })
-      .catch(e => {
-        alert('ERROR')
-      }) */
-    },
     count() {
       axios.get(`${this.context}/count`)
       .then(res => {
@@ -140,6 +116,26 @@ export default {
                     { headers: headers })
       .then(res => {
         alert(`SUCCESS : ${res.data}`)
+      })
+      .catch(e => {
+        alert('ERROR')
+      })
+    },
+    login() {
+      let data = {
+        customerId: this.customerId,
+        password: this.password
+      }
+      let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT fefege..'
+      }
+      alert(`${this.customerId} : ${this.password}`)
+      axios.post(`${this.context}/login`, 
+                  JSON.stringify(data),
+                  { headers: headers })
+      .then(res => {
+        alert(`SUCCESS : ${res.data.customerName}`)
       })
       .catch(e => {
         alert('ERROR')

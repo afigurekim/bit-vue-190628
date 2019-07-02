@@ -48,7 +48,7 @@ public class CustomerService {
         return customerRepository.saveAll(entities);
     }
 
-    public Iterable<Customer> findByCustomerId(String customerId){
-        return customerRepository.findByCustomerId(customerId);
+    public Customer login(String customerId, String password){
+        return customerRepository.findByCustomerIdAndPassword(customerId, password);
     }
 }

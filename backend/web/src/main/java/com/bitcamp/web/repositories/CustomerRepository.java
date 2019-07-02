@@ -11,6 +11,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerRepository extends CrudRepository<Customer, Long>{
-    // public CustomerDTO login(Customer entity);
-    public List<Customer> findByCustomerId(String customerId);
+    public Customer findByCustomerIdAndPassword(String customerId, String password);
 }
