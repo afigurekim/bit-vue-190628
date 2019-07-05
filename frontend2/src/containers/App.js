@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import '../assets/css/App.css';
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Hello from '../components/Hello.jsx';
-import MyNavbar from '../components/MyNavbar.jsx';
+// import Hello from '../components/Hello';
+import MyNavbar from '../components/MyNavbar';
+// import Login from './Login';
+import Join from './Join';
 
 class App extends Component {
   render(){
     return(
       <div className="App">
         <MyNavbar></MyNavbar>
-        <Hello name='홍길동'></Hello>
+        <Join></Join>
       </div>
     );
   }

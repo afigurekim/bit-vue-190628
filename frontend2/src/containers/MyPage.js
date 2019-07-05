@@ -1,7 +1,7 @@
-import React, {Componeents} from 'react';
+import React, { Component } from 'react';
 import {} from 'react-bootstrap';
 
-class MyPage extends Componeents {
+class MyPage extends Component {
     render(){
         return(
             <div>
