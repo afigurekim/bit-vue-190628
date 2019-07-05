@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {} from 'react-bootstrap';
 
-class Footer extends Component {
-    render(){
-        return (
+class Login extends Component {
+    render() {
+        return(
             <div>
-                <h2>FOOTER</h2>
+                <h2>LOGIN</h2>
             </div>
         );
     }
 }
-export default Footer;
+export default Login;
