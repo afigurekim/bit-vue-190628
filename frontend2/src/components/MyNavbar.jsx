@@ -10,24 +10,16 @@ const MyNavbar = () => {
     return (
         <Router>
         <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">Team 4Ward</Navbar.Brand>
+        <Navbar.Brand href="/">Team 4Ward</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-            <Nav.Link href="#">
-                <Link to="/">Home</Link>
-            </Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#link">스케줄러</Nav.Link>
             <NavDropdown title="회원관리" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#">
-                    <Link to="/join">회원가입</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#">
-                    <Link to="/login">로그인</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#">
-                    <Link to="/mypage">마이페이지</Link>
-                </NavDropdown.Item>
+                <NavDropdown.Item href="/join">회원가입</NavDropdown.Item>
+                <NavDropdown.Item href="/login">로그인</NavDropdown.Item>
+                <NavDropdown.Item href="/mypage">마이페이지</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#">
                     회원탈퇴
