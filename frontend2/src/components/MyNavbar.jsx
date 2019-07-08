@@ -9,6 +9,7 @@ import Hello from '../containers/customer/Hello'
 import LightSwitch from '../containers/common/LightSwitch'
 import Timer from '../containers/common/Timer'
 import TodoApp from '../containers/common/TodoApp'
+import Clock from '../containers/common/Clock'
 
 const MyNavbar = () => {
     return (
@@ -19,11 +20,12 @@ const MyNavbar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/todo">스케줄러</Nav.Link>
             <Nav.Link href="/hello">Hello</Nav.Link>
             <NavDropdown title="기본문법" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/switch">SWITCH</NavDropdown.Item>
                 <NavDropdown.Item href="/timer">TIMER</NavDropdown.Item>
+                <NavDropdown.Item href="/todo">스케줄러</NavDropdown.Item>
+                <NavDropdown.Item href="/clock">시 계</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="회원관리" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/join">회원가입</NavDropdown.Item>
@@ -47,6 +49,7 @@ const MyNavbar = () => {
         <Route path="/switch" exact component={LightSwitch} />
         <Route path="/timer" exact component={Timer} />
         <Route path="/todo" exact component={TodoApp} />
+        <Route path="/clock" exact component={Clock} />
         </Router>
     );
 }
