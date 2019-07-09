@@ -4,13 +4,13 @@ class TodoApp extends Component{
     constructor(props){
         super(props);
         this.state = { items: [], text: '' };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange(e){
+    handleChange = (e) => {
         this.setState({ text: e.target.value });
     }
-    handleSubmit(e){
+    handleSubmit = (e) => {
         e.preventDefault();
         if(!this.state.text.length){
             return;
