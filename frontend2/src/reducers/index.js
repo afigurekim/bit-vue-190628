@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import todo from './todoReducer'
+import todoReducer from './todoReducer'
 
-const todoApp = combineReducers(
+const shopApp = combineReducers(
     {
-        todo: todo
+        todoReducer
     }
 )
 
-export default todoApp
+export default shopApp

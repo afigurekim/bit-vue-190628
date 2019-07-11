@@ -13,7 +13,7 @@ class TodoApp extends Component{
     handleSubmit = (e) => {
         e.preventDefault();
         if(!this.state.text.length){
-            return;
+            return; 
         }
         const newItem = {
             text: this.state.text,
