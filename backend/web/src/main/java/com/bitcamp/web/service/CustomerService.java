@@ -48,7 +48,7 @@ public class CustomerService {
         return customerRepository.saveAll(entities);
     }
 
-    public Customer login(String customerId, String password){
+/*     public Customer login(String customerId, String password){
         return customerRepository.findByCustomerIdAndPassword(customerId, password);
-    }
+    } */
 }

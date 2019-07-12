@@ -120,12 +120,13 @@ public class CustomerController {
     } */
     @PostMapping("/login")
     public CustomerDTO login(@RequestBody CustomerDTO dto) {
-        System.out.println("login() 진입 : "+ dto.getCustomerId() +" / "+ dto.getPassword());
+        /* System.out.println("login() 진입 : "+ dto.getCustomerId() +" / "+ dto.getPassword());
         ISupplier fx = (() -> {
             return repo.findByCustomerIdAndPassword(dto.getCustomerId(), dto.getPassword());
         });
         Customer entity = (Customer)fx.get();
-        return modelMapper.map(entity, CustomerDTO.class);
+        return modelMapper.map(entity, CustomerDTO.class); */
+        return null;
     }
 
 }
